@@ -4,7 +4,7 @@ import { join, relative, sep } from "node:path";
 
 export const HASH_METHOD = "sha256 over the sorted lines '<path relative to the folder>\\0<sha256 of the file>\\n' for every file in the folder";
 export const CATALOG_FILES = ["studio-role-registry.json", "studio-role-registry.md", "plugin.json", "distribution.json", "LICENSE", "THIRD_PARTY_NOTICES.md", "PROVENANCE.md", "design-skill-library.json"];
-export const CATALOG_TREES = ["assets", "scripts", "licenses", "roles", "provenance", "templates"];
+export const CATALOG_TREES = ["assets", "scripts", "licenses", "roles", "provenance", "templates", "pm-config"];
 const SKIP = new Set(["node_modules", ".git", ".remotion", "out", ".next"]);
 
 export const sha256 = bytes => createHash("sha256").update(bytes).digest("hex");

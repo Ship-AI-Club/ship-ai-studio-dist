@@ -5,7 +5,7 @@
 //
 // Usage: node scripts/model-setup.mjs --brief brief/project.json [--available id,id]
 //        node scripts/model-setup.mjs --brief brief/project.json --answer opus|sonnet|none
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -63,6 +63,11 @@ export function modelSetup({ brief, precedence = loadPrecedence(), available } =
   };
 }
 
+export function readBrief(file) {
+  if (!existsSync(file)) throw new ModelSetupError(`no project brief at ${file}. The PM prepares the project first (node ../../scripts/product/prepare-project.mjs --target <new-project-folder>), then runs model setup on its brief/project.json`);
+  try { return JSON.parse(readFileSync(file, "utf8")); } catch (e) { throw new ModelSetupError(`${file} is not valid JSON (${e.message})`); }
+}
+
 // Saves the owner's one answer. null (no answer, "not sure") saves the default.
 export function saveSiteAnswer({ brief, answer, precedence = loadPrecedence() }) {
   const f = precedence.site.fields;
@@ -76,7 +81,7 @@ if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.m
   const a = k => { const i = process.argv.indexOf(k); return i > -1 ? process.argv[i + 1] : undefined; };
   try {
     if (!a("--brief")) throw new Error("--brief is required");
-    let brief = JSON.parse(readFileSync(a("--brief"), "utf8"));
+    let brief = readBrief(a("--brief"));
     if (process.argv.includes("--answer")) {
       brief = saveSiteAnswer({ brief, answer: a("--answer") });
       writeFileSync(a("--brief"), JSON.stringify(brief, null, 2) + "\n");

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "ship-ai-studio",
-  "release": "0.1.0",
+  "release": "0.1.1",
   "hashMethod": "sha256 over the sorted lines '<path relative to the folder>\\0<sha256 of the file>\\n' for every file in the folder",
   "skills": [
     {
@@ -187,7 +187,7 @@
     {
       "name": "studio-pm",
       "path": "skills/studio-pm",
-      "sha256": "d57ca1d29abc1f7362a56908de02dd2b500f7924f90f82031d743a05d24db82e"
+      "sha256": "07ed80d043085b86dc8b0144ef228f06cef655356ffe75c621ef9436aff5449d"
     },
     {
       "name": "studio-product-marketing",
@@ -197,7 +197,7 @@
     {
       "name": "studio-product-setup",
       "path": "skills/studio-product-setup",
-      "sha256": "c4b2019e4c8037bc12aee0d2ac15997704561985381091aaf367d76b9f542d43"
+      "sha256": "f42405fc4a8ea4569fbca50e21b00f572e623221887538b5849a3e14c4a5bd88"
     },
     {
       "name": "studio-programmatic-seo",
@@ -267,7 +267,7 @@
     {
       "name": "studio-team-setup",
       "path": "skills/studio-team-setup",
-      "sha256": "9e5af9313955bb34a615c0956a743e4e742e57e69679f92296a3760c1d1e3e2a"
+      "sha256": "701471cffa5c57e569f65b673007a57624adf2dfa32f92e9dc32ba970315efe3"
     },
     {
       "name": "studio-team-workflow",
@@ -718,8 +718,8 @@
     },
     {
       "path": "distribution.json",
-      "sha256": "0e5d6a877cf613d8e92d42e4b658f0e4511dc767f98c44dec9f7dce4f69fb513",
-      "bytes": 447
+      "sha256": "ffdd6019e35b6ef299d408d39374b58018caee13a4d6ac5b1c6e7a6969be60c7",
+      "bytes": 960
     },
     {
       "path": "LICENSE",
@@ -743,8 +743,18 @@
     },
     {
       "path": "plugin.json",
-      "sha256": "1af9e38292cbf6952dbbff49a259c1c4a7ce5e5648aa1744df63a968029baef9",
+      "sha256": "397431bbc2526fc1e2798ed4c233a3a21f8774b5aab6be726891b8b2a4b9faec",
       "bytes": 547
+    },
+    {
+      "path": "pm-config/pm.json",
+      "sha256": "71ef4b1c0941e9444a4d77bade0789dea170bec30b99cc1215be8fef9eb4a3c4",
+      "bytes": 2042
+    },
+    {
+      "path": "pm-config/studio-bootstrap/SKILL.md",
+      "sha256": "df686ab7d7657790d2cff5c315a9ebefddd9586ebfb1b40f692ae516d356ca04",
+      "bytes": 7634
     },
     {
       "path": "PROVENANCE.md",
@@ -808,8 +818,8 @@
     },
     {
       "path": "roles/pm.md",
-      "sha256": "29747e866df21b4e33a729dd17e0b33f3b4a37a73506a902fbaf6eb37aef3f85",
-      "bytes": 12539
+      "sha256": "97f2c02d2a9813cf772ec6473504f963860d8503110b9c2ffca400b5f18ab179",
+      "bytes": 13707
     },
     {
       "path": "roles/researcher.md",
@@ -833,18 +843,18 @@
     },
     {
       "path": "scripts/lib/catalog.mjs",
-      "sha256": "095b7a00b205895867f5baa2382e2ec3f2c5f87b4131fdd011dbbbc924fddd14",
-      "bytes": 2278
+      "sha256": "fbb80ca88104bdd5c09de9cdb9ac58c1d1ee9e494be697d25c73e4dc1595b2b7",
+      "bytes": 2291
     },
     {
       "path": "scripts/lib/distribution.mjs",
-      "sha256": "6f2392706fece5a8c9546d93496ff91db3b89e5f477dcad87c53e58a899648b0",
-      "bytes": 2157
+      "sha256": "19071188dd9e003176b890d88b13944816502074e3a846b8fb72b46c625c9814",
+      "bytes": 4260
     },
     {
       "path": "scripts/model-setup.mjs",
-      "sha256": "930e28a8c1f77fd5f3c3200e5ecd0d72eef59d944e8f20b0b5d9027b94fbb59c",
-      "bytes": 5598
+      "sha256": "4eeddd359d9ad91f610e4034369acd471c1964f4deffcbf8ddfa5830b20287e6",
+      "bytes": 6012
     },
     {
       "path": "scripts/product/prepare-project.mjs",
@@ -862,14 +872,24 @@
       "bytes": 4254
     },
     {
+      "path": "scripts/role-gate.mjs",
+      "sha256": "e069a53405708a7263863a270142d3baaf7e840c15b0ebb74758a8ae28491961",
+      "bytes": 3911
+    },
+    {
+      "path": "scripts/verify-install.mjs",
+      "sha256": "70a37104e5b1f2007429ade30a242074651752a9841c1542191fd31494858ab6",
+      "bytes": 7830
+    },
+    {
       "path": "studio-role-registry.json",
-      "sha256": "90db9a34fd269acc7907bd0251876de7f71b2a9802d3338d01b30111b1c81f76",
-      "bytes": 17984
+      "sha256": "76c11c996b58cb6813a10e1626951f1cdf5737b2c5b25db67674aae4c5a5f5b2",
+      "bytes": 20827
     },
     {
       "path": "studio-role-registry.md",
-      "sha256": "2e3846b6ae3c220a36ecb5a3299ca9bda4c31e3cb0061317a95b345700245632",
-      "bytes": 2529
+      "sha256": "27bd018078fbd01eb668ee59352c6adda5f154308650b43564b16c561d77414d",
+      "bytes": 3830
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",

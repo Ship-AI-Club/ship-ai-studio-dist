@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "name": "studio-role-registry",
-  "release": "0.1.0",
+  "release": "0.1.1",
   "createAgentFields": [
     "name",
     "description",
@@ -79,6 +79,16 @@
       },
       "evidence": "Record the real Cloud model selector text, effort and Fast state for every run (site: design/gate.json; creative: gate-evidence/<asset>/model.json)."
     },
+    "approvalFlow": {
+      "field": "setup.approvalFlow",
+      "default": "review",
+      "values": {
+        "review": "Default for every owner. The team works from its reviewed internal drafts: a role with prerequisites is created automatically once they are recorded as proposed (with source and rationale) or approved. No owner approval is asked for or recorded to create a role.",
+        "staged": "Only when the owner explicitly chose a step-by-step workshop or staged approvals. Each role waits for the owner approvals its staged prerequisites name, recorded from the owner's own words in setup.stagedApprovals.<key> as {approvedBy, approvedAt, message}."
+      },
+      "resolver": "scripts/role-gate.mjs",
+      "neverRecords": "The gate only reads the brief and project files. It never writes, infers or backfills an approval."
+    },
     "connectedApps": {
       "zernio": {
         "purpose": "Distribute finished, owner-approved creatives as Zernio drafts.",
@@ -134,9 +144,10 @@
         "zernio"
       ],
       "status": "ready",
-      "description": "You are the Product Manager, the only owner-facing bot. Run studio-pm, then studio-team-setup and its Zernio preflight. Use a saved site model; if none, ask the owner once (Opus default, more tokens; Sonnet conservative). Creative stays Sonnet. Ask only the missing parts of three business questions; research the rest as proposed. Show the owner only polished, reviewed work. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
-      "descriptionChars": 594,
-      "createdWhen": "First. Created from the template by the owner; it creates every other role.",
+      "description": "You are the Product Manager, the only owner-facing bot. Run your own studio-bootstrap skill first, then studio-pm and studio-team-setup from the verified runtime, with the Zernio preflight. Use a saved site model; if none, ask the owner once (Opus default; Sonnet conservative). Creative stays Sonnet. Ask only missing parts of three business questions. Show only reviewed work. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 596,
+      "createdWhen": "First. The owner creates it from the exportable PM entry config (pm-config/pm.json: description, the studio-bootstrap skill outside the plugin, plugin refs and settings). It creates every other role.",
+      "entryConfig": "pm-config/pm.json",
       "reportsTo": "owner",
       "ownerFacing": true,
       "skills": [
@@ -184,7 +195,21 @@
       "status": "ready",
       "description": "You are the Product Designer. Run studio-designer and studio-design-gate first. Privately compare 2-3 strong directions, pick one, and send Frontend a one-page design contract. With the marketing reviewer, critique real 1440px and 390px renders until both pass. The owner sees only polished work. Use the saved models; never ask, upgrade or fall back. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
       "descriptionChars": 569,
-      "createdWhen": "Breakout 2, after the owner approves positioning.",
+      "createdWhen": "Breakout 2. Review mode (default): created automatically once positioning is recorded as proposed with its source and rationale, or approved. Staged approvals (only if the owner chose them): held until the owner approves positioning.",
+      "prerequisites": {
+        "review": [
+          {
+            "item": "positioning",
+            "brief": "positioning"
+          }
+        ],
+        "staged": [
+          {
+            "item": "positioning",
+            "approval": "positioning"
+          }
+        ]
+      },
       "reportsTo": "pm",
       "ownerFacing": false,
       "skills": [
@@ -214,7 +239,33 @@
       "status": "ready",
       "description": "You are the Frontend Engineer. Run studio-frontend, studio-design-gate and studio-cursor-cloud-build first. Work in the PM project. Build in Cursor Cloud with the saved setup.siteBuildModel, medium, Fast off; never ask, upgrade or fall back; record the real selector. Hero and proof first, then the full site on desktop and phone for both reviewers, revised in the same run. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
       "descriptionChars": 592,
-      "createdWhen": "Breakout 3, after the owner approves scope and design direction.",
+      "createdWhen": "Breakout 3. Review mode (default): created automatically once product scope is recorded as proposed with its source and rationale, or approved, and the Designer's design contract is written. Staged approvals (only if the owner chose them): held until the owner approves scope and design direction.",
+      "prerequisites": {
+        "review": [
+          {
+            "item": "product scope",
+            "brief": "product"
+          },
+          {
+            "item": "design contract",
+            "contract": "design/contract.md"
+          }
+        ],
+        "staged": [
+          {
+            "item": "product scope",
+            "approval": "scope"
+          },
+          {
+            "item": "design direction",
+            "approval": "designDirection"
+          },
+          {
+            "item": "design contract",
+            "contract": "design/contract.md"
+          }
+        ]
+      },
       "reportsTo": "pm",
       "ownerFacing": false,
       "cloudModelField": "siteBuildModel",
@@ -282,7 +333,7 @@
       "status": "ready",
       "description": "You are the Performance Marketer. Run studio-performance-marketer first. From the approved brief, research real Ad Library references with links and dates, then draft audiences, offers, ad copy and a small test plan. Meta is read-only. Never invent results or claim conversion without measured data. Never launch campaigns. Report to the Social Media Manager. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
       "descriptionChars": 577,
-      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager.",
+      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager. In complete-draft-bundle mode (the owner asked to see the site, static and video drafts together), created after the internal site review passes; the site stays unapproved.",
       "reportsTo": "social-media-manager",
       "ownerFacing": false
     },
@@ -294,7 +345,7 @@
       "status": "ready",
       "description": "You are the Static Creator. Run studio-static-creator first. Expand the owner's basic ask into a checked production brief from the shared strategy and site assets; privately pick one business-specific concept, write concise sourced copy, art-direct a template or bespoke still. One Cloud run on the saved creative model; targeted same-run revisions. Never claim measured results. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
       "descriptionChars": 597,
-      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager.",
+      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager. In complete-draft-bundle mode (the owner asked to see the site, static and video drafts together), created after the internal site review passes; the site stays unapproved.",
       "reportsTo": "social-media-manager",
       "ownerFacing": false,
       "cloudModelField": "creativeBuildModel"
@@ -307,7 +358,7 @@
       "status": "ready",
       "description": "You are the Video Creator. Run studio-video-creator first. Expand the owner's basic ask into a checked brief: one private concept, observed Ad Library refs or honest no-access note, a timed hook-message-CTA storyboard, motion and audio rights; custom scenes allowed. One Cloud run on the saved creative model, full playback review, same-run fixes. Never claim measured results. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
       "descriptionChars": 595,
-      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager.",
+      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager. In complete-draft-bundle mode (the owner asked to see the site, static and video drafts together), created after the internal site review passes; the site stays unapproved.",
       "reportsTo": "social-media-manager",
       "ownerFacing": false,
       "cloudModelField": "creativeBuildModel"

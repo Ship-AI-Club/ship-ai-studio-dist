@@ -7,9 +7,10 @@ description: Use by the owner-facing PM only, to run the startup preflight (conn
 
 Only the owner-facing PM runs this skill. Every other bot is created by the PM. The owner never imports, wires or briefs bots, never writes technical prompts and never picks a model per asset.
 
-## 0. Resolve your own copy
+## 0. Hydrate and resolve your own copy
 
-From this folder run:
+Your `studio-bootstrap` skill (PM entry config, outside this plugin) hydrates and verifies the pinned release before this skill runs. Teammates get the same hydrate block, copied unchanged from that skill into their first message (step 4); each bot runs it on its own computer with `REL=<release>` first. It clones the release tag from the public source into `$HOME/.studio-runtime/<release>/`, checks the tag commit, the digest (tag annotation and `distribution.json`) and the file and skill counts, runs the release's `verify-install.mjs`, and only then switches `$HOME/.studio-runtime/current`. It refuses on any mismatch. A new release goes into a new folder; an existing release folder is never changed. Never write vendor plugin caches and never fall back to a creator workspace or the older product-team plugin. Native catalog evidence (version and skill count, or absent) is recorded separately from the verified runtime; the runtime is never called a refreshed native catalog.
+From this folder in the verified runtime (`$HOME/.studio-runtime/current/skills/studio-team-setup`) run:
 
 ```
 node ../../scripts/resolve-studio.mjs --skill studio-team-setup
@@ -23,7 +24,7 @@ When you link the owner or a teammate to Studio, use only the `urls` in that JSO
 
 Read [studio-role-registry.json](../../studio-role-registry.json). For each role it gives the display name pattern, the description (the bot's startup instruction, at most 600 characters), the entry skill, when to create it and who it reports to.
 
-- `status: "ready"`: create when its `createdWhen` moment arrives.
+- `status: "ready"`: create when its `createdWhen` moment arrives. For a role with `prerequisites` (Designer, Frontend), run `node ../../scripts/role-gate.mjs --role <id> --project <project>`. `create: true` (exit 0) means create it now, automatically, with no owner question. Exit 2 lists what is `missing`. In review mode, the default, that is an internal draft step, never an owner approval. Only in staged mode (`setup.approvalFlow` "staged", set only when the owner chose staged approvals) does it wait for the owner's recorded approvals. Never write an approval to pass the gate. Performance Marketer, Static Creator and Video Creator: in complete-draft-bundle mode, create them after the internal site review passes; the site stays unapproved and no owner approval is recorded.
 - `status: "stub"`: the role is not filled in this release. Do not create it. Report "The <role> role is not available in Studio <release> yet" to the owner once, and continue with what is available.
 
 ### Startup preflight
@@ -36,7 +37,7 @@ A missing connection blocks delivery only. Never hold the intake, the site or th
 
 ## 2. Save the model choices
 
-The rules are `setup.modelPrecedence` in the registry. Apply them with:
+The rules are `setup.modelPrecedence` in the registry. For a new owner, the project is prepared first (`studio-product-setup` step 4); then apply them once with:
 
 ```
 node ../../scripts/model-setup.mjs --brief <project>/brief/project.json
@@ -69,10 +70,13 @@ Order:
 
 ## 4. First message to each new bot
 
-Send this, filled in, as the bot's first message:
+Send this, filled in, as the bot's first message, with the hydrate block from your `studio-bootstrap` skill pasted where shown:
 
 ```text
-Load your entry skill from the Studio plugin only.
+Load your entry skill from the verified Studio runtime only, on your own computer.
+First run this with bash, unchanged, after the line REL=<release>:
+<the hydrate block from studio-bootstrap, unchanged>
+Reply with its JSON. If it prints STUDIO HYDRATE REFUSED, reply with that line and stop.
 Plugin root: <root from pm.json>
 Release: <release>
 Catalog sha256: <catalogSha256>

@@ -1,0 +1,41 @@
+{
+  "schema": "studio-pm-config/1",
+  "release": "0.1.1",
+  "role": "pm",
+  "name": "<Project> · Product Manager",
+  "description": "You are the Product Manager, the only owner-facing bot. Run your own studio-bootstrap skill first, then studio-pm and studio-team-setup from the verified runtime, with the Zernio preflight. Use a saved site model; if none, ask the owner once (Opus default; Sonnet conservative). Creative stays Sonnet. Ask only missing parts of three business questions. Show only reviewed work. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+  "bootstrapSkill": {
+    "name": "studio-bootstrap",
+    "path": "pm-config/studio-bootstrap/SKILL.md",
+    "install": "Add this file, exactly as written, as the PM bot's own skill named studio-bootstrap. It is not loaded from the Studio plugin and needs none of its files."
+  },
+  "pluginRefs": [
+    {
+      "name": "ship-ai-studio",
+      "source": "https://github.com/Ship-AI-Club/ship-ai-studio-dist",
+      "release": "0.1.1",
+      "tag": "v0.1.1",
+      "use": "The bootstrap skill hydrates and verifies this release itself. A native install is optional and is recorded as evidence only."
+    },
+    {
+      "name": "pstack",
+      "source": "Resolved from the live plugin catalog at setup; never invented.",
+      "use": "Required. Verify installed, enabled and tool-ready before project work."
+    }
+  ],
+  "settings": {
+    "studioRuntimeBase": "$HOME/.studio-runtime",
+    "studioRelease": "0.1.1",
+    "siteBuild": {
+      "defaultModel": "claude-opus-5-5",
+      "effort": "medium",
+      "fast": false,
+      "rule": "Use the model saved in the project brief; if none, ask the owner once and save it."
+    },
+    "creativeBuild": {
+      "model": "claude-sonnet-5-5",
+      "effort": "medium",
+      "rule": "Independent of the site model; no fast field; never upgraded silently."
+    }
+  }
+}

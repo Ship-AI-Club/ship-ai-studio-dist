@@ -4,17 +4,19 @@ Data: [studio-role-registry.json](studio-role-registry.json). The owner-facing P
 
 | Role id | Display name | Entry skill | Status | Created when | Reports to |
 |---|---|---|---|---|---|
-| pm | `<Project> · Product Manager` | `studio-pm` | stub | First. Created from the template by the owner; it creates every other role. | owner |
-| researcher | `<Project> · Researcher` | `studio-researcher` | stub | Breakout 1, after the owner answers the intake questions. | pm |
-| designer | `<Project> · Product Designer` | `studio-designer` | stub | Breakout 2, after the owner approves positioning. | pm |
-| frontend | `<Project> · Frontend Engineer` | `studio-frontend` | stub | Breakout 3, after the owner approves scope and design direction. | pm |
-| backend | `<Project> · Backend Engineer` | `studio-backend` | stub | Breakout 3, only when the journey needs server behavior. | pm |
+| pm | `<Project> · Product Manager` | `studio-pm` | ready | First. The owner creates it from the exportable PM entry config, [pm-config/pm.json](pm-config/pm.json); it creates every other role. | owner |
+| researcher | `<Project> · Researcher` | `studio-researcher` | ready | Breakout 1, after the owner answers the intake questions. | pm |
+| designer | `<Project> · Product Designer` | `studio-designer` | ready | Breakout 2. Review mode: automatically, once positioning is proposed with source and rationale, or approved. Staged approvals: after the owner approves positioning. | pm |
+| frontend | `<Project> · Frontend Engineer` | `studio-frontend` | ready | Breakout 3. Review mode: automatically, once product scope is proposed with source and rationale, or approved, and the design contract is written. Staged approvals: after the owner approves scope and design direction. | pm |
+| backend | `<Project> · Backend Engineer` | `studio-backend` | ready | Breakout 3, only when the journey needs server behavior. | pm |
 | social-media-manager | `<Project> · Social Media Manager` | `studio-social-media-manager` | ready | Breakout 3, before the first site build. | pm |
-| performance-marketer | `<Project> · Performance Marketer` | `studio-performance-marketer` | ready | Breakout 4, after the owner approves the working site. | social-media-manager |
-| static-creator | `<Project> · Static Creator` | `studio-static-creator` | ready | Breakout 4, after the owner approves the working site. | social-media-manager |
-| video-creator | `<Project> · Video Creator` | `studio-video-creator` | ready | Breakout 4, after the owner approves the working site. | social-media-manager |
+| performance-marketer | `<Project> · Performance Marketer` | `studio-performance-marketer` | ready | Breakout 4, after the owner approves the working site. In complete-draft-bundle mode (the owner asked to see the site, static and video drafts together), created after the internal site review passes; the site stays unapproved. | social-media-manager |
+| static-creator | `<Project> · Static Creator` | `studio-static-creator` | ready | Breakout 4, after the owner approves the working site. In complete-draft-bundle mode (the owner asked to see the site, static and video drafts together), created after the internal site review passes; the site stays unapproved. | social-media-manager |
+| video-creator | `<Project> · Video Creator` | `studio-video-creator` | ready | Breakout 4, after the owner approves the working site. In complete-draft-bundle mode (the owner asked to see the site, static and video drafts together), created after the internal site review passes; the site stays unapproved. | social-media-manager |
 
-Product roles are stubs; the Product repair fills their descriptions and entry skills. Until then the PM does not create them.
+## Role prerequisites
+
+`setup.approvalFlow` in the brief decides how roles with `prerequisites` (Designer, Frontend) are created. `review`, the default, means the team works from its reviewed internal drafts: the PM creates the role automatically once `node scripts/role-gate.mjs --role <id> --project <project>` reports `create: true`, with no owner question. `staged`, set only when the owner chose staged approvals, holds the role until the owner's own approvals are recorded in `setup.stagedApprovals`. The gate only reads. It never writes, infers or backfills an approval.
 
 ## Model setup
 

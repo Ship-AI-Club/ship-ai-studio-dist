@@ -1,14 +1,20 @@
 {
   "schema": "studio-distribution/1",
   "publicSource": "https://github.com/Ship-AI-Club/ship-ai-studio-dist",
-  "release": "0.1.0",
-  "tag": "v0.1.0",
-  "status": "placeholder: the public distribution repo does not exist yet; nothing has been published",
+  "release": "0.1.1",
+  "tag": "v0.1.1",
+  "status": "release candidate: the owner publishes the built dist/ tree and an annotated tag whose message carries the runtime digest line from build-dist",
   "includes": {
     "productTeam": {
       "commit": "87248784ba3c12a8787839a2dd2a78bd4982f23c",
       "release": "1.0.3",
       "importRecord": "provenance/product-import.json"
     }
+  },
+  "runtime": {
+    "digestMethod": "sha256 of the sha256sum list ('<sha256>  <path>' lines, paths relative to the release root, sorted bytewise) of every release file except catalog.json and distribution.json. Shell: git ls-files -z | LC_ALL=C sort -z | grep -zvxE 'catalog\\.json|distribution\\.json' | xargs -0 sha256sum | sha256sum",
+    "digest": "8e79d1bef5097c7ca6478e367ccf0294e4a43228ae6847314f7f8885116d0ab2",
+    "files": 306,
+    "skills": 59
   }
 }
