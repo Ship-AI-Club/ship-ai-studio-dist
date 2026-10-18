@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "isDemo": false,
+  "business": {
+    "name": "Tessaly Swim School",
+    "audienceType": "b2c",
+    "description": "Tessaly Swim School is a fictional business used only as a test fixture. It teaches small-group swimming lessons for children.",
+    "customer": "Parents of children aged 4 to 10 who cannot swim yet",
+    "industry": "Children swimming lessons (fictional)",
+    "region": null,
+    "offer": "Small-group swimming lessons, four children per instructor",
+    "pricing": {
+      "model": "unknown",
+      "display": null,
+      "approved": false
+    }
+  },
+  "intake": {
+    "answers": [
+      {
+        "question": "What does your business do, and for whom?",
+        "answer": "Swimming lessons for young children in small groups.",
+        "source": "owner"
+      },
+      {
+        "question": "What do you want visitors to buy or start?",
+        "answer": "A term of weekly lessons.",
+        "source": "owner"
+      },
+      {
+        "question": "What should a visitor do first on the site?",
+        "answer": "Book a free trial lesson.",
+        "source": "owner"
+      }
+    ],
+    "openQuestions": [
+      "Lesson price per term is not decided"
+    ]
+  },
+  "positioning": {
+    "status": "proposed",
+    "source": "PM recommendation from owner answers 1-2",
+    "rationale": "Parents worry about attention per child; the small group answers that directly.",
+    "headline": "Four children per instructor, so your child is never waiting at the edge.",
+    "summary": "Weekly small-group lessons that build water confidence step by step.",
+    "difference": "Groups capped at four children.",
+    "sources": []
+  },
+  "product": {
+    "status": "proposed",
+    "source": "PM recommendation from owner answer 3",
+    "rationale": "The owner asked for a free trial lesson as the first step.",
+    "journey": "booking",
+    "primaryAction": {
+      "label": "Book a free trial lesson",
+      "href": "/start"
+    },
+    "outcome": "The parent books a free trial lesson.",
+    "acceptance": [
+      "Parent can book a trial lesson"
+    ]
+  },
+  "brand": {
+    "accent": "#0f7c86",
+    "ink": "#13262a",
+    "paper": "#f3f8f8"
+  },
+  "about": {
+    "status": "draft",
+    "headline": "About page not approved yet.",
+    "body": [],
+    "facts": []
+  },
+  "articles": [],
+  "solutions": [],
+  "siteUrl": null,
+  "publicationApproved": false,
+  "setup": {
+    "siteBuildModel": "claude-opus-5-5",
+    "siteBuildEffort": "medium",
+    "siteBuildFast": false,
+    "creativeBuildModel": "claude-sonnet-5-5",
+    "creativeBuildEffort": "medium"
+  },
+  "mode": "review"
+}

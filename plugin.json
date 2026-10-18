@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ship-ai-studio",
+  "version": "0.1.0",
+  "description": "Ship AI Studio: one owner-facing PM, a product team and a marketing team on one shared library. Drafts only until the owner approves each exact action.",
+  "author": {
+    "name": "Ship AI",
+    "url": "https://www.shipai.club"
+  },
+  "repository": "https://github.com/Ship-AI-Club/ship-ai-studio-dist",
+  "license": "MIT",
+  "keywords": ["ship-ai", "studio", "product", "marketing", "cursor-cloud"]
+}

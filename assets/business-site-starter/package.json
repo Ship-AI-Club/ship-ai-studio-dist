@@ -1,0 +1,31 @@
+{
+  "name": "business-site-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:review": "npm run verify:design && npm run verify:release && node scripts/verify-design-gate.mjs --stage render && next build",
+    "start": "next start",
+    "configure": "node scripts/configure.mjs",
+    "check": "npm run verify:design && node scripts/configure.mjs --check && node --test tests/*.test.mjs",
+    "verify:design": "node scripts/verify-design-skills.mjs",
+    "verify:gate": "node scripts/verify-design-gate.mjs --stage build",
+    "verify:owner-review": "node scripts/verify-design-gate.mjs --stage owner-review",
+    "prebuild": "npm run verify:design && npm run verify:release && npm run verify:gate",
+    "verify:release": "node scripts/verify-release.mjs --target build",
+    "verify:production": "node scripts/verify-release.mjs --target production",
+    "verify:publish": "node scripts/verify-release.mjs --target publication",
+    "verify:forms": "node scripts/verify-forms-nojs.mjs",
+    "gate:fingerprint": "node scripts/verify-design-gate.mjs --fingerprint"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}

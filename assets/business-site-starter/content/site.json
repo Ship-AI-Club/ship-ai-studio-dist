@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "isDemo": true,
+  "business": {
+    "name": "Your business",
+    "audienceType": "unsure",
+    "description": "Business description not supplied yet.",
+    "customer": "Your chosen customer",
+    "industry": "",
+    "region": null,
+    "offer": "Your approved offer",
+    "pricing": {
+      "model": "unknown",
+      "display": null,
+      "approved": false
+    }
+  },
+  "intake": {
+    "answers": [],
+    "openQuestions": []
+  },
+  "positioning": {
+    "status": "draft",
+    "headline": "Positioning not approved yet.",
+    "summary": "The Product Manager records the approved positioning in this brief.",
+    "difference": "",
+    "sources": []
+  },
+  "product": {
+    "status": "draft",
+    "journey": "assessment",
+    "primaryAction": {
+      "label": "Try the experience",
+      "href": "/start"
+    },
+    "outcome": "Visitor outcome not approved yet.",
+    "acceptance": []
+  },
+  "brand": {
+    "accent": "#335fd7",
+    "ink": "#182a43",
+    "paper": "#f7f9fc"
+  },
+  "about": {
+    "status": "draft",
+    "headline": "About page not approved yet.",
+    "body": [],
+    "facts": []
+  },
+  "articles": [],
+  "solutions": [],
+  "siteUrl": null,
+  "publicationApproved": false
+}

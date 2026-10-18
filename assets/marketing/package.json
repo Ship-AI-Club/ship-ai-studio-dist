@@ -1,0 +1,25 @@
+{
+  "name": "studio-marketing-renderers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Token-driven social still and short video renderers. Every brand value comes from a required design-token file.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "still": "node render-still.mjs",
+    "video": "node render-video.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.535"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.13",
+    "typescript": "5.9.3"
+  }
+}

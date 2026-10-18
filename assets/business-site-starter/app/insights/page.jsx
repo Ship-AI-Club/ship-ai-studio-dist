@@ -1,0 +1,3 @@
+import Link from 'next/link';import {articles,pageMeta} from '../../lib/site';
+export const metadata=pageMeta('Insights','Useful information for your next decision.','/insights');
+export default function Page(){return <section className="section listing"><p className="eyebrow">Insights</p><h1>Find your next useful idea.</h1>{articles.length?<div className="cards">{articles.map(x=><Link className="content-card" href={`/insights/${x.slug}`} key={x.slug}><h2>{x.title}</h2><p>{x.description}</p><b>↗</b></Link>)}</div>:<p className="lede">No reviewed content yet. Your team can prepare the first useful piece from your approved brief.</p>}</section>}

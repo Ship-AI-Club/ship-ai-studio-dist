@@ -1,0 +1,140 @@
+{
+  "common": [
+    "studio-product-setup",
+    "studio-team-workflow",
+    "studio-workshop-owner-language",
+    "studio-brief-to-site",
+    "studio-product-marketing"
+  ],
+  "roles": {
+    "pm": [
+      "studio-pm",
+      "studio-design-gate",
+      "studio-lead-magnets",
+      "studio-copywriting",
+      "studio-copy-editing"
+    ],
+    "research": [
+      "studio-researcher",
+      "studio-content-strategy",
+      "studio-copywriting"
+    ],
+    "designer": [
+      "studio-designer",
+      "studio-design-gate",
+      "studio-shared-design-library",
+      "studio-yc-interface-craft",
+      "studio-intentional-ui-design",
+      "studio-frontend-design",
+      "studio-lead-magnets",
+      "studio-copywriting",
+      "studio-copy-editing",
+      "studio-cro"
+    ],
+    "frontend": [
+      "studio-frontend",
+      "studio-design-gate",
+      "studio-cursor-cloud-build",
+      "studio-shared-design-library",
+      "studio-yc-interface-craft",
+      "studio-intentional-ui-design",
+      "studio-frontend-design",
+      "studio-copywriting",
+      "studio-copy-editing",
+      "studio-cro",
+      "studio-break-ui"
+    ],
+    "backend": [
+      "studio-backend"
+    ]
+  },
+  "conditional": {
+    "illustration": [
+      "studio-illustration-design-grammar"
+    ],
+    "motion": [
+      "studio-emil-design-eng",
+      "studio-animate",
+      "studio-review-animations",
+      "studio-animation-performance",
+      "studio-animation-vocabulary",
+      "studio-find-animation-opportunities",
+      "studio-improve-animations"
+    ],
+    "components": [
+      "studio-pick-ui-library",
+      "studio-prototype",
+      "studio-ask-sonner"
+    ],
+    "phone": [
+      "studio-mobile-native"
+    ],
+    "native-app-only": [
+      "studio-write-swift",
+      "studio-animate-expo",
+      "studio-apple-design"
+    ],
+    "content-and-seo": [
+      "studio-about-page",
+      "studio-seo-article",
+      "studio-content-strategy",
+      "studio-programmatic-seo",
+      "studio-site-architecture",
+      "studio-seo-audit",
+      "studio-schema"
+    ],
+    "marketing": [
+      "studio-social",
+      "studio-ads",
+      "studio-ad-creative",
+      "studio-emails",
+      "studio-signup",
+      "studio-lead-magnets",
+      "studio-customer-research",
+      "studio-competitor-profiling"
+    ],
+    "marketing-review": [
+      "studio-design-gate",
+      "studio-product-marketing",
+      "studio-copywriting",
+      "studio-cro",
+      "studio-ad-creative"
+    ],
+    "research-depth": [
+      "studio-customer-research",
+      "studio-competitor-profiling"
+    ]
+  },
+  "notes": [
+    "Available does not mean every skill is loaded into every prompt.",
+    "Read relevant full files and referenced guidance. Conditional groups load only when the task or design contract needs them.",
+    "Only the PM prepares the one project. Gate verdicts come from reviews of actual screenshots, never from file audits or tests.",
+    "PStack is a separate required plugin. Its skill count is not this plugin file count."
+  ],
+  "designPrecedence": [
+    {
+      "skill": "studio-yc-interface-craft",
+      "role": "Leads visual direction. Read SKILL.md and only the 3-5 matching research records."
+    },
+    {
+      "skill": "studio-intentional-ui-design",
+      "role": "Sets the quality floor."
+    },
+    {
+      "skill": "studio-frontend-design",
+      "role": "Guides composition and type."
+    },
+    {
+      "skill": "studio-illustration-design-grammar",
+      "role": "Only when the design contract needs illustration. Not for UI styling."
+    },
+    {
+      "skill": "studio-emil-design-eng",
+      "role": "Only when the design contract needs motion, with the conditional motion skills."
+    },
+    {
+      "skill": "studio-pick-ui-library",
+      "role": "Only when the design contract needs a component reference (also prototype, ask-sonner)."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "ship-ai",
+  "owner": {
+    "name": "Ship AI"
+  },
+  "plugins": [
+    {
+      "name": "ship-ai-studio",
+      "source": ".",
+      "description": "Studio product and marketing skills with one owner-facing PM entry point."
+    }
+  ]
+}

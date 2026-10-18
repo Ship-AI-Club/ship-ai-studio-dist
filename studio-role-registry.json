@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 2,
+  "name": "studio-role-registry",
+  "release": "0.1.0",
+  "createAgentFields": [
+    "name",
+    "description",
+    "section_id"
+  ],
+  "displayNamePattern": "<Project> · <Role>",
+  "descriptionMaxChars": 600,
+  "sectionId": "Resolved at runtime from the PM's own project section. Never invented.",
+  "entrySkillResolution": "Each entry skill runs scripts/resolve-studio.mjs, which checks the installed Studio catalog, plugin root and release and stops with an error on any mismatch. It never falls back to the older product-team skills.",
+  "sharedRules": "Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+  "setup": {
+    "siteBuildModel": "claude-opus-5-5",
+    "siteBuildEffort": "medium",
+    "siteBuildFast": false,
+    "creativeBuildModel": "claude-sonnet-5-5",
+    "creativeBuildEffort": "medium",
+    "notes": [
+      "siteBuild* is website implementation. creativeBuild* is static and video creative production.",
+      "Creative runs carry no fast field at all: claude-sonnet-5-5 exposes context and reasoning_effort only, so no fast param is passed, saved or recorded.",
+      "Never fall back to the site model or upgrade creative to a higher-cost model silently. Ask the owner only if the selected model is unavailable or a higher-cost choice needs approval."
+    ],
+    "modelPrecedence": {
+      "resolver": "scripts/model-setup.mjs",
+      "consumedBy": [
+        "pm",
+        "researcher",
+        "designer",
+        "frontend",
+        "backend",
+        "social-media-manager",
+        "performance-marketer",
+        "static-creator",
+        "video-creator"
+      ],
+      "site": {
+        "fields": {
+          "model": "siteBuildModel",
+          "effort": "siteBuildEffort",
+          "fast": "siteBuildFast"
+        },
+        "default": {
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "fast": false
+        },
+        "choices": [
+          "claude-opus-5-5",
+          "claude-sonnet-5-5"
+        ],
+        "order": [
+          "saved preference in brief/project.json setup.siteBuildModel: use it, ask nothing",
+          "no saved preference: the PM asks the owner exactly once, then saves the answer"
+        ],
+        "question": "Which model should build your website? Opus 5.5 Medium is the default: it uses more tokens and can improve output. Sonnet 5.5 Medium is more conservative with tokens. Quality varies.",
+        "askAtMost": 1,
+        "noAnswer": "Save the default (claude-opus-5-5, medium, fast false) and do not ask again."
+      },
+      "creative": {
+        "fields": {
+          "model": "creativeBuildModel",
+          "effort": "creativeBuildEffort"
+        },
+        "default": {
+          "model": "claude-sonnet-5-5",
+          "effort": "medium"
+        },
+        "independentOfSite": true,
+        "fastField": "none",
+        "askOnlyWhen": [
+          "the creative model is unavailable",
+          "a higher-cost choice needs the owner's approval"
+        ],
+        "upgrade": "never silent: only with an ownerApprovedUpgrade record of the owner's exact words",
+        "fallback": "none: if the model is unavailable, stop and ask; never switch to the site model or another model"
+      },
+      "evidence": "Record the real Cloud model selector text, effort and Fast state for every run (site: design/gate.json; creative: gate-evidence/<asset>/model.json)."
+    },
+    "connectedApps": {
+      "zernio": {
+        "purpose": "Distribute finished, owner-approved creatives as Zernio drafts.",
+        "setupSkill": "skills/studio-zernio-handoff/references/connect-zernio.md",
+        "checker": "assets/marketing/zernio/connection.mjs",
+        "runAt": "team startup, before the first owner question; again before any delivery step",
+        "startup": {
+          "scopeFrom": "the requested organization: marketing when it includes any marketing-team role, distribution when the owner asks to send, post or schedule creative; otherwise site-only",
+          "scopes": [
+            "site-only",
+            "marketing",
+            "distribution"
+          ],
+          "whenConnected": "silent: reuse the working connection and record it; show the owner nothing",
+          "whenMissing": {
+            "site-only": "silent: do not interrupt intake; decide again if marketing or distribution is added",
+            "marketing": "one short startup message with ownerText, next to the first intake question; never deferred to bundle approval",
+            "distribution": "one short startup message with ownerText, next to the first intake question; never deferred to bundle approval"
+          },
+          "decide": "node assets/marketing/zernio/connection.mjs --out marketing/zernio/connection.json --startup <scope>"
+        },
+        "consumedBy": [
+          "pm",
+          "social-media-manager"
+        ],
+        "endpoint": "https://mcp.zernio.com/mcp",
+        "transport": "streamable-http",
+        "auth": {
+          "preferred": "oauth-browser-sign-in",
+          "fallback": "only when no OAuth path works: an API key through the platform's masked secret request or the connector's masked header setup; never echoed, stored in plain text or logged, and never in chat, prompts, templates or source"
+        },
+        "reuseExisting": true,
+        "ownerText": "We can prepare your site and creative now. To send them later, connect Zernio. I will open sign-in if needed. Do not paste a key here.",
+        "verify": [
+          "Read the live tool list and schema; use the real names and prefix.",
+          "Call the authenticated profiles and accounts reads; a public tool list alone is not proof of sign-in.",
+          "Record the selected profile, account, platform, handle and ID in marketing/zernio/connection.json.",
+          "No test post, draft or upload to prove sign-in."
+        ],
+        "whenMissing": "Blocks delivery only (upload, draft, schedule, publish). Site, static, video and review work continue. Re-check on the owner's next message.",
+        "whenNoAccounts": "Guide the owner to connect one social account in Zernio, then re-check.",
+        "delivery": "One final bundle shows the exact caption, assets, link, profile, account, action, schedule and timezone. Approving the creative is not permission to upload, draft, schedule or publish; each needs the owner's approval of the exact bundle hash."
+      }
+    }
+  },
+  "roles": [
+    {
+      "id": "pm",
+      "team": "product",
+      "displayName": "<Project> · Product Manager",
+      "entrySkill": "studio-pm",
+      "startupPreflight": [
+        "zernio"
+      ],
+      "status": "ready",
+      "description": "You are the Product Manager, the only owner-facing bot. Run studio-pm, then studio-team-setup and its Zernio preflight. Use a saved site model; if none, ask the owner once (Opus default, more tokens; Sonnet conservative). Creative stays Sonnet. Ask only the missing parts of three business questions; research the rest as proposed. Show the owner only polished, reviewed work. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 594,
+      "createdWhen": "First. Created from the template by the owner; it creates every other role.",
+      "reportsTo": "owner",
+      "ownerFacing": true,
+      "skills": [
+        "studio-product-setup",
+        "studio-team-workflow",
+        "studio-workshop-owner-language",
+        "studio-brief-to-site",
+        "studio-product-marketing",
+        "studio-pm",
+        "studio-design-gate",
+        "studio-lead-magnets",
+        "studio-copywriting",
+        "studio-copy-editing"
+      ],
+      "roleDoc": "roles/pm.md"
+    },
+    {
+      "id": "researcher",
+      "team": "product",
+      "displayName": "<Project> · Researcher",
+      "entrySkill": "studio-researcher",
+      "status": "ready",
+      "description": "You are the Product Researcher. Run studio-researcher first. Read the PM brief; no second intake. Research the real industry, customers, workarounds and alternatives from dated sources. Propose two options when audience, offer or pricing is unclear; prices are hypotheses. Return evidence, sources and gaps to the PM. Use the saved models; never ask, upgrade or fall back. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 590,
+      "createdWhen": "Breakout 1, after the owner answers the intake questions.",
+      "reportsTo": "pm",
+      "ownerFacing": false,
+      "skills": [
+        "studio-product-setup",
+        "studio-team-workflow",
+        "studio-workshop-owner-language",
+        "studio-brief-to-site",
+        "studio-product-marketing",
+        "studio-researcher",
+        "studio-content-strategy",
+        "studio-copywriting"
+      ],
+      "roleDoc": "roles/researcher.md"
+    },
+    {
+      "id": "designer",
+      "team": "product",
+      "displayName": "<Project> · Product Designer",
+      "entrySkill": "studio-designer",
+      "status": "ready",
+      "description": "You are the Product Designer. Run studio-designer and studio-design-gate first. Privately compare 2-3 strong directions, pick one, and send Frontend a one-page design contract. With the marketing reviewer, critique real 1440px and 390px renders until both pass. The owner sees only polished work. Use the saved models; never ask, upgrade or fall back. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 569,
+      "createdWhen": "Breakout 2, after the owner approves positioning.",
+      "reportsTo": "pm",
+      "ownerFacing": false,
+      "skills": [
+        "studio-product-setup",
+        "studio-team-workflow",
+        "studio-workshop-owner-language",
+        "studio-brief-to-site",
+        "studio-product-marketing",
+        "studio-designer",
+        "studio-design-gate",
+        "studio-shared-design-library",
+        "studio-yc-interface-craft",
+        "studio-intentional-ui-design",
+        "studio-frontend-design",
+        "studio-lead-magnets",
+        "studio-copywriting",
+        "studio-copy-editing",
+        "studio-cro"
+      ],
+      "roleDoc": "roles/designer.md"
+    },
+    {
+      "id": "frontend",
+      "team": "product",
+      "displayName": "<Project> · Frontend Engineer",
+      "entrySkill": "studio-frontend",
+      "status": "ready",
+      "description": "You are the Frontend Engineer. Run studio-frontend, studio-design-gate and studio-cursor-cloud-build first. Work in the PM project. Build in Cursor Cloud with the saved setup.siteBuildModel, medium, Fast off; never ask, upgrade or fall back; record the real selector. Hero and proof first, then the full site on desktop and phone for both reviewers, revised in the same run. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 592,
+      "createdWhen": "Breakout 3, after the owner approves scope and design direction.",
+      "reportsTo": "pm",
+      "ownerFacing": false,
+      "cloudModelField": "siteBuildModel",
+      "skills": [
+        "studio-product-setup",
+        "studio-team-workflow",
+        "studio-workshop-owner-language",
+        "studio-brief-to-site",
+        "studio-product-marketing",
+        "studio-frontend",
+        "studio-design-gate",
+        "studio-cursor-cloud-build",
+        "studio-shared-design-library",
+        "studio-yc-interface-craft",
+        "studio-intentional-ui-design",
+        "studio-frontend-design",
+        "studio-copywriting",
+        "studio-copy-editing",
+        "studio-cro",
+        "studio-break-ui"
+      ],
+      "roleDoc": "roles/frontend.md"
+    },
+    {
+      "id": "backend",
+      "team": "product",
+      "displayName": "<Project> · Backend Engineer",
+      "entrySkill": "studio-backend",
+      "status": "ready",
+      "description": "You are the Backend Engineer. Run studio-backend first. Join only when the approved journey needs server behavior. Agree inputs, outputs, validation and storage with Frontend. Test invalid input, success, duplicates, failure and no-send for real. Run typecheck, tests and the build before any push. Use the saved models; never ask, upgrade or fall back. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 571,
+      "createdWhen": "Breakout 3, only when the approved journey needs server behavior (validation, storage, webhook). Otherwise never created.",
+      "reportsTo": "pm",
+      "ownerFacing": false,
+      "skills": [
+        "studio-product-setup",
+        "studio-team-workflow",
+        "studio-workshop-owner-language",
+        "studio-brief-to-site",
+        "studio-product-marketing",
+        "studio-backend"
+      ],
+      "roleDoc": "roles/backend.md"
+    },
+    {
+      "id": "social-media-manager",
+      "team": "marketing",
+      "displayName": "<Project> · Social Media Manager",
+      "entrySkill": "studio-social-media-manager",
+      "startupPreflight": [
+        "zernio"
+      ],
+      "status": "ready",
+      "description": "You are the Social Media Manager and marketing lead. Run studio-social-media-manager first, then its Zernio connection preflight. Use the PM's approved brief and site; no second intake. Review the offer and CTA before the first build, then the rendered pages. Lead and review the Performance Marketer, Static and Video Creators. Return one reviewed bundle to the PM. Drafts only. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 597,
+      "createdWhen": "Breakout 3, before the first site build. Reviews the offer and CTA, then the rendered desktop and phone pages with the design reviewer.",
+      "reportsTo": "pm",
+      "ownerFacing": false
+    },
+    {
+      "id": "performance-marketer",
+      "team": "marketing",
+      "displayName": "<Project> · Performance Marketer",
+      "entrySkill": "studio-performance-marketer",
+      "status": "ready",
+      "description": "You are the Performance Marketer. Run studio-performance-marketer first. From the approved brief, research real Ad Library references with links and dates, then draft audiences, offers, ad copy and a small test plan. Meta is read-only. Never invent results or claim conversion without measured data. Never launch campaigns. Report to the Social Media Manager. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 577,
+      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager.",
+      "reportsTo": "social-media-manager",
+      "ownerFacing": false
+    },
+    {
+      "id": "static-creator",
+      "team": "marketing",
+      "displayName": "<Project> · Static Creator",
+      "entrySkill": "studio-static-creator",
+      "status": "ready",
+      "description": "You are the Static Creator. Run studio-static-creator first. Expand the owner's basic ask into a checked production brief from the shared strategy and site assets; privately pick one business-specific concept, write concise sourced copy, art-direct a template or bespoke still. One Cloud run on the saved creative model; targeted same-run revisions. Never claim measured results. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 597,
+      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager.",
+      "reportsTo": "social-media-manager",
+      "ownerFacing": false,
+      "cloudModelField": "creativeBuildModel"
+    },
+    {
+      "id": "video-creator",
+      "team": "marketing",
+      "displayName": "<Project> · Video Creator",
+      "entrySkill": "studio-video-creator",
+      "status": "ready",
+      "description": "You are the Video Creator. Run studio-video-creator first. Expand the owner's basic ask into a checked brief: one private concept, observed Ad Library refs or honest no-access note, a timed hook-message-CTA storyboard, motion and audio rights; custom scenes allowed. One Cloud run on the saved creative model, full playback review, same-run fixes. Never claim measured results. Owner and interface text: short, clear, active. Marketing copy follows the approved brand voice. Use only this project's folder. Never deploy, send, post, publish, schedule or spend without the owner's exact approval.",
+      "descriptionChars": 595,
+      "createdWhen": "Breakout 4, after the owner approves the working site. Created by the PM with the Social Media Manager.",
+      "reportsTo": "social-media-manager",
+      "ownerFacing": false,
+      "cloudModelField": "creativeBuildModel"
+    }
+  ]
+}

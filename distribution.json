@@ -1,0 +1,14 @@
+{
+  "schema": "studio-distribution/1",
+  "publicSource": "https://github.com/Ship-AI-Club/ship-ai-studio-dist",
+  "release": "0.1.0",
+  "tag": "v0.1.0",
+  "status": "placeholder: the public distribution repo does not exist yet; nothing has been published",
+  "includes": {
+    "productTeam": {
+      "commit": "87248784ba3c12a8787839a2dd2a78bd4982f23c",
+      "release": "1.0.3",
+      "importRecord": "provenance/product-import.json"
+    }
+  }
+}

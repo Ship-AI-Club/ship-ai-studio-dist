@@ -1,0 +1,3 @@
+import Link from 'next/link';import {solutions,pageMeta} from '../../lib/site';
+export const metadata=pageMeta('Solutions','Useful information for your next decision.','/solutions');
+export default function Page(){return <section className="section listing"><p className="eyebrow">Solutions</p><h1>Find your next useful idea.</h1>{solutions.length?<div className="cards">{solutions.map(x=><Link className="content-card" href={`/solutions/${x.slug}`} key={x.slug}><h2>{x.title}</h2><p>{x.description}</p><b>↗</b></Link>)}</div>:<p className="lede">No reviewed content yet. Your team can prepare the first useful piece from your approved brief.</p>}</section>}

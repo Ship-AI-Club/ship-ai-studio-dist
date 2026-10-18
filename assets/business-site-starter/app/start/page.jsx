@@ -1,0 +1,3 @@
+import {site,pageMeta} from '../../lib/site';import Experience from './experience';
+export const metadata=pageMeta(site.product.primaryAction.label,site.product.outcome,'/start');
+export default function Page(){return <section className="prose"><p className="eyebrow">Your next step</p><h1>{site.product.outcome}</h1>{site.product.journey==='assessment'?<Experience/>:<><p className="lede">{site.isDemo?'This is where your team builds the approved visitor experience.':'The online next step is still being prepared.'}</p><p>No request, account, booking or payment has been created. Connect and test the real action before enabling it.</p></>}</section>}

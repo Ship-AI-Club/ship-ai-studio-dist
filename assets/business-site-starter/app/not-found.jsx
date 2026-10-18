@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function NotFound(){return <section className="prose"><p className="eyebrow">Page unavailable</p><h1>That page is not ready to share.</h1><p>It may still be in review, or the address may have changed.</p><Link className="button" href="/">Go to the home page ↗</Link></section>}

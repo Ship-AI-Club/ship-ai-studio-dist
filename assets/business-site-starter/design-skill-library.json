@@ -1,0 +1,303 @@
+{
+  "roles": [
+    "designer",
+    "frontend"
+  ],
+  "instructions": "Product Designer and Frontend Engineer use the same full design skill library, versions and reference files. Every full file stays available in the shared project and the Cloud workspace; available does not mean loaded. Follow the precedence in studio-design-gate: YC Interface Craft leads visual direction (read its SKILL.md and only the 3-5 matching research records); Intentional UI Design sets the quality floor; frontend-design guides composition and type. Load Illustration Design Grammar, motion (Emil design engineering and the animation skills) and component references only when the chosen design needs them, and record that choice in the design contract. product-marketing, copywriting, copy-editing and conversion guidance shape the copy. A link or summary is not a loaded skill. Use design-skill-library.json to compare file hashes and preserve licenses. Do not load unrelated native-app guidance. Frontend keeps its engineering, SEO, build and test skills. It implements the contracted type, spacing, color, imagery, interaction and motion as components written for this page. Do not invent a new direction or repeat exploration after approval. Record the paths actually read in evidence/design-skills-read.md. The Designer and a marketing reviewer pass Gate 1 and Gate 2 on actual screenshots before the owner review.",
+  "skills": [
+    "studio-yc-interface-craft",
+    "studio-intentional-ui-design",
+    "studio-illustration-design-grammar",
+    "studio-emil-design-eng",
+    "studio-frontend-design",
+    "studio-product-marketing",
+    "studio-lead-magnets",
+    "studio-copywriting",
+    "studio-copy-editing",
+    "studio-cro",
+    "studio-animate",
+    "studio-animation-vocabulary",
+    "studio-animation-performance",
+    "studio-review-animations",
+    "studio-find-animation-opportunities",
+    "studio-improve-animations",
+    "studio-pick-ui-library",
+    "studio-prototype",
+    "studio-break-ui",
+    "studio-ask-sonner",
+    "studio-workshop-owner-language"
+  ],
+  "files": [
+    {
+      "skill": "studio-yc-interface-craft",
+      "path": ".agents/skills/studio-yc-interface-craft/SKILL.md",
+      "sha256": "0317c89d1769efd542f15c97d0e866b58cdceeb2c43115cf4e450fa3d741d4de"
+    },
+    {
+      "skill": "studio-yc-interface-craft",
+      "path": ".agents/skills/studio-yc-interface-craft/agents/openai.yaml",
+      "sha256": "6097e47d53640867b64aa4fe9617aca3db9157149eabbd27485dc271fb3b2e85"
+    },
+    {
+      "skill": "studio-yc-interface-craft",
+      "path": ".agents/skills/studio-yc-interface-craft/references/company-index.json",
+      "sha256": "4c239ff4cdb3af706eb4b7cb700bd3162fbf64bf732453504f1657bbfead6eb6"
+    },
+    {
+      "skill": "studio-yc-interface-craft",
+      "path": ".agents/skills/studio-yc-interface-craft/references/direction-workshop.md",
+      "sha256": "dbe414216e26b2429ca10f5725d7021b4c36b1e4ed07e93dabd52e6dac4aa45f"
+    },
+    {
+      "skill": "studio-yc-interface-craft",
+      "path": ".agents/skills/studio-yc-interface-craft/references/motion-and-quality.md",
+      "sha256": "d92a49dadf7d29bdc285a64dc9c77d86f1f3e00d39ae7cfc8670bdaff1302b3a"
+    },
+    {
+      "skill": "studio-yc-interface-craft",
+      "path": ".agents/skills/studio-yc-interface-craft/references/research-and-examples.md",
+      "sha256": "7bf70bb40a363551161416764909b1ff7fbf7f7a2bfb597525569854d7200a1d"
+    },
+    {
+      "skill": "studio-yc-interface-craft",
+      "path": ".agents/skills/studio-yc-interface-craft/references/system-and-surfaces.md",
+      "sha256": "355c2a9265d30e941b48976fc25ae5da7ee1e6d07769e0e92e2d53705aade804"
+    },
+    {
+      "skill": "studio-intentional-ui-design",
+      "path": ".agents/skills/studio-intentional-ui-design/SKILL.md",
+      "sha256": "bcdac3b7408f1129b6737fa8e3b3826e2db7d8d67d19dd5da859c3cc96ff31fc"
+    },
+    {
+      "skill": "studio-illustration-design-grammar",
+      "path": ".agents/skills/studio-illustration-design-grammar/SKILL.md",
+      "sha256": "c0454d4ac33766846cf6c5d09cc966f0280c7a6bdbc60f8e2e27b2783d7eff7c"
+    },
+    {
+      "skill": "studio-emil-design-eng",
+      "path": ".agents/skills/studio-emil-design-eng/SKILL.md",
+      "sha256": "5cb9238bb7bc4eb4b2d3f014bb67ef46e0ef4bc3188aef5ae84e700da22f79b3"
+    },
+    {
+      "skill": "studio-frontend-design",
+      "path": ".agents/skills/studio-frontend-design/LICENSE.txt",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    {
+      "skill": "studio-frontend-design",
+      "path": ".agents/skills/studio-frontend-design/SKILL.md",
+      "sha256": "0f4c9d5194e801e5973a82bb868d5dad70db43a6827526464a89e5375cd4e0c7"
+    },
+    {
+      "skill": "studio-product-marketing",
+      "path": ".agents/skills/studio-product-marketing/SKILL.md",
+      "sha256": "9a0987cb0a7af8a4fa301c5f68787f4de3ff0b53174f1f48f43436e7f5390881"
+    },
+    {
+      "skill": "studio-product-marketing",
+      "path": ".agents/skills/studio-product-marketing/evals/evals.json",
+      "sha256": "0c6599b88f50ec1be91096a36ba6c5a15cf8312151394e3469e5ddb991b19afb"
+    },
+    {
+      "skill": "studio-product-marketing",
+      "path": ".agents/skills/studio-product-marketing/references/brand-voice.md",
+      "sha256": "932f3453db2761f03050792e39800150495dab449750b40913a4314ea97e7672"
+    },
+    {
+      "skill": "studio-lead-magnets",
+      "path": ".agents/skills/studio-lead-magnets/SKILL.md",
+      "sha256": "8cf27a62698674b0c026f8dff253266cb3d446c1428dfd20a968ecc8dd145fa8"
+    },
+    {
+      "skill": "studio-lead-magnets",
+      "path": ".agents/skills/studio-lead-magnets/evals/evals.json",
+      "sha256": "459b4b4f69f5717f23f3029597026c07f1201978e0bc1923f918501da3fe7a6f"
+    },
+    {
+      "skill": "studio-lead-magnets",
+      "path": ".agents/skills/studio-lead-magnets/references/benchmarks.md",
+      "sha256": "becdf4bcde17e788ead10794c797294548c712ea1074e042336da93433a61187"
+    },
+    {
+      "skill": "studio-lead-magnets",
+      "path": ".agents/skills/studio-lead-magnets/references/content-to-skill-corpus-design.md",
+      "sha256": "a6db00a8298b2ce52965c40b57c01120a0f9ff4caf5ca55ede81bc2f242bae56"
+    },
+    {
+      "skill": "studio-lead-magnets",
+      "path": ".agents/skills/studio-lead-magnets/references/content-to-skill-release.md",
+      "sha256": "87bcc9218232b73b824e8cebac1e64deacffa755779ce2cc0db799c92873c891"
+    },
+    {
+      "skill": "studio-lead-magnets",
+      "path": ".agents/skills/studio-lead-magnets/references/content-to-skill.md",
+      "sha256": "dacbfff6d538ee37167f20034165dbf3a273d8bd1607def6450c649e40ebafa9"
+    },
+    {
+      "skill": "studio-lead-magnets",
+      "path": ".agents/skills/studio-lead-magnets/references/format-guide.md",
+      "sha256": "401f65d709cefbd7ee2df11273e0b616ec50e37e71d914556c800067fdcdef8e"
+    },
+    {
+      "skill": "studio-copywriting",
+      "path": ".agents/skills/studio-copywriting/SKILL.md",
+      "sha256": "4e92248325211932b56cf27e315dc556e2b7f7bff7a557cedb64aad5a5f70a63"
+    },
+    {
+      "skill": "studio-copywriting",
+      "path": ".agents/skills/studio-copywriting/evals/evals.json",
+      "sha256": "ccec86052a0edd8646d0e50e63c08e0e971f443d8f6e9178843a1629f79efdb0"
+    },
+    {
+      "skill": "studio-copywriting",
+      "path": ".agents/skills/studio-copywriting/references/ai-tells.md",
+      "sha256": "b98c3a19b3a75c714d69e80a0076e4c07244b0e833c2ce81ff2631224fb7f7b2"
+    },
+    {
+      "skill": "studio-copywriting",
+      "path": ".agents/skills/studio-copywriting/references/copy-frameworks.md",
+      "sha256": "352122944bf9e891ceb0e003adce41591d111e9d97057700626249919dfe430d"
+    },
+    {
+      "skill": "studio-copywriting",
+      "path": ".agents/skills/studio-copywriting/references/natural-transitions.md",
+      "sha256": "9bd61b0de5be2c4de4ce130c68236b4f290b12737823827a458bb2b4c8584683"
+    },
+    {
+      "skill": "studio-copy-editing",
+      "path": ".agents/skills/studio-copy-editing/SKILL.md",
+      "sha256": "c08ca8ff9bcbc91315aa254b50ecf3d50fb530e60c072ef9bc121c08b9e37f77"
+    },
+    {
+      "skill": "studio-copy-editing",
+      "path": ".agents/skills/studio-copy-editing/evals/evals.json",
+      "sha256": "cc18c9f51094058759267d465cfcc50da65f248f66b923326781aa642d622ca7"
+    },
+    {
+      "skill": "studio-copy-editing",
+      "path": ".agents/skills/studio-copy-editing/references/checklist.md",
+      "sha256": "4cf94c922286223681fc53721fcc65ae7299f1e36e797e7397d369d674580c60"
+    },
+    {
+      "skill": "studio-copy-editing",
+      "path": ".agents/skills/studio-copy-editing/references/content-refresh.md",
+      "sha256": "ba73cdf278fe6b552eee27eb1452494f11f9d17ef67d720657e0982f76fb961b"
+    },
+    {
+      "skill": "studio-copy-editing",
+      "path": ".agents/skills/studio-copy-editing/references/plain-english-alternatives.md",
+      "sha256": "df4f820d4c63ae8a517c64a243c101658352cd07d002355bf3c97de0a00f3775"
+    },
+    {
+      "skill": "studio-cro",
+      "path": ".agents/skills/studio-cro/SKILL.md",
+      "sha256": "4f97e035874c74ec7d3c43101ba707dae43d6d191fd7aa0ae11f3168561c8ba9"
+    },
+    {
+      "skill": "studio-cro",
+      "path": ".agents/skills/studio-cro/evals/evals.json",
+      "sha256": "62f3003602836e2b49d797ca582e7703629a6b07b131eb77b51b2bb39fe65775"
+    },
+    {
+      "skill": "studio-cro",
+      "path": ".agents/skills/studio-cro/references/experiments.md",
+      "sha256": "bbcc356c0af36cfaa4556bf9e929deac30c65cafb37f909d7c51d4777fe254ca"
+    },
+    {
+      "skill": "studio-cro",
+      "path": ".agents/skills/studio-cro/references/form.md",
+      "sha256": "49b8f29b3da1ae6510572288cad3eb1f3d43a969373443be98b38639746587e6"
+    },
+    {
+      "skill": "studio-animate",
+      "path": ".agents/skills/studio-animate/RECIPES.md",
+      "sha256": "21ff63d84391db8d96ecdf9170095f55a42c836ccc36fd3269c4772bab031ba2"
+    },
+    {
+      "skill": "studio-animate",
+      "path": ".agents/skills/studio-animate/SKILL.md",
+      "sha256": "6e3a274b5deabb9b5e25f69c31ca20bc4dc8660c55ebcfb3fda8ed105484e503"
+    },
+    {
+      "skill": "studio-animation-vocabulary",
+      "path": ".agents/skills/studio-animation-vocabulary/SKILL.md",
+      "sha256": "26c11b46dc2ba4185083db70d9799ac1269f6204120a82793c8609ba5124ba26"
+    },
+    {
+      "skill": "studio-animation-performance",
+      "path": ".agents/skills/studio-animation-performance/SKILL.md",
+      "sha256": "703d8236fc429c081cf95c6a613cf116b84b1060b9ea6be70e7c014411241726"
+    },
+    {
+      "skill": "studio-review-animations",
+      "path": ".agents/skills/studio-review-animations/SKILL.md",
+      "sha256": "c03c15bed2af888d06886cbd7ca20f340f66a8f232e9cc63539365fdf2b910ff"
+    },
+    {
+      "skill": "studio-review-animations",
+      "path": ".agents/skills/studio-review-animations/STANDARDS.md",
+      "sha256": "e7d3605034acda54ca13e43aec9e64d65b53de20f75b11b8d694e373012fbe07"
+    },
+    {
+      "skill": "studio-find-animation-opportunities",
+      "path": ".agents/skills/studio-find-animation-opportunities/SKILL.md",
+      "sha256": "e0e2a2899ec3f8a82436da05bfb7b1a663fa350f7f14066d6a0bfa9b56efe568"
+    },
+    {
+      "skill": "studio-improve-animations",
+      "path": ".agents/skills/studio-improve-animations/AUDIT.md",
+      "sha256": "551c8473e20e5f4774680bc24d45e1c68e50992582720905c6b077756b7b5a55"
+    },
+    {
+      "skill": "studio-improve-animations",
+      "path": ".agents/skills/studio-improve-animations/PLAN-TEMPLATE.md",
+      "sha256": "0a08ac8e23fd2082d7ffb86aeed7b789de77328c3cf874b16f1a755f2ef0a6ad"
+    },
+    {
+      "skill": "studio-improve-animations",
+      "path": ".agents/skills/studio-improve-animations/SKILL.md",
+      "sha256": "119e2e302d30a3e85ca4346c3e0c85d860ea047a65df846086fd374bb97ae2dc"
+    },
+    {
+      "skill": "studio-pick-ui-library",
+      "path": ".agents/skills/studio-pick-ui-library/SKILL.md",
+      "sha256": "d3eee35fa24def38f8a1ef8afbc3f0c9ac73e2229187d19ec535a5213ceafbf0"
+    },
+    {
+      "skill": "studio-prototype",
+      "path": ".agents/skills/studio-prototype/PICKER.md",
+      "sha256": "31a55eec94715cc79942e91e172e539e3031dcd5e2e5ee7c1446cf2caee960a6"
+    },
+    {
+      "skill": "studio-prototype",
+      "path": ".agents/skills/studio-prototype/SKILL.md",
+      "sha256": "f21dfc0b0a49b3f97536864b67e354fe09b775ab5ed24a665e80527ac1cf517b"
+    },
+    {
+      "skill": "studio-break-ui",
+      "path": ".agents/skills/studio-break-ui/CATALOG.md",
+      "sha256": "7358efcc6bb48e35187be1c064cf60022dcb18c72c18fab58b606dfc5f421f15"
+    },
+    {
+      "skill": "studio-break-ui",
+      "path": ".agents/skills/studio-break-ui/SKILL.md",
+      "sha256": "08d0e007d7c3b4745d3087613e0805592d1f0593adf6ca4b77da94e10f3b9712"
+    },
+    {
+      "skill": "studio-ask-sonner",
+      "path": ".agents/skills/studio-ask-sonner/API.md",
+      "sha256": "4bb06f482c5757529e3d7a672a30fbeed42d24919a63e2571384a9ce1549aa7f"
+    },
+    {
+      "skill": "studio-ask-sonner",
+      "path": ".agents/skills/studio-ask-sonner/SKILL.md",
+      "sha256": "91368470bfaf4153b09f0f23065f017141547617087580a0386d5c2e7878913a"
+    },
+    {
+      "skill": "studio-workshop-owner-language",
+      "path": ".agents/skills/studio-workshop-owner-language/SKILL.md",
+      "sha256": "b9f66bc2a4aae8ac790bffc83d1546749f779c6924d708029ee85d1bc792e5ef"
+    }
+  ],
+  "relativeTo": "starter root"
+}

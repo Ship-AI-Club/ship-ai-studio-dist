@@ -1,0 +1,1 @@
+import {indexable,absolute,articles,solutions,aboutReady} from '../lib/site';export default function sitemap(){if(!indexable)return [];return ['/',...(aboutReady?['/about']:[]),...(articles.length?['/insights']:[]),...(solutions.length?['/solutions']:[]),...articles.map(x=>`/insights/${x.slug}`),...solutions.map(x=>`/solutions/${x.slug}`)].map(p=>({url:absolute(p)}));}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "isDemo": true,
+  "business": {
+    "name": "Example business services",
+    "audienceType": "b2b",
+    "description": "Explicitly fictional fixture for local testing.",
+    "customer": "Operations teams evaluating a workflow",
+    "industry": "",
+    "region": null,
+    "offer": "A scoped workflow assessment",
+    "pricing": {
+      "model": "unknown",
+      "display": null,
+      "approved": false
+    }
+  },
+  "intake": {
+    "answers": [
+      "Example business services",
+      "Operations teams evaluating a workflow",
+      "A scoped workflow assessment"
+    ],
+    "openQuestions": []
+  },
+  "positioning": {
+    "status": "approved",
+    "headline": "Choose your next useful step.",
+    "summary": "A fictional local fixture, showing how an approved brief shapes the site.",
+    "difference": "Fixture only. Not a verified claim.",
+    "sources": [
+      {
+        "id": "fixture",
+        "title": "Fictional test source; replace with actual research",
+        "date": "2026-10-16",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  "product": {
+    "status": "approved",
+    "journey": "assessment",
+    "primaryAction": {
+      "label": "Find a workflow to improve",
+      "href": "/start"
+    },
+    "outcome": "Choose a next step that fits your needs.",
+    "acceptance": [
+      "Correct customer, offer and visitor action"
+    ]
+  },
+  "brand": {
+    "accent": "#335fd7",
+    "ink": "#182a43",
+    "paper": "#f7f9fc"
+  },
+  "about": {
+    "status": "approved",
+    "headline": "The people and purpose behind your business.",
+    "body": [
+      "This is a fictional testing fixture. Replace it with verified company facts."
+    ],
+    "facts": []
+  },
+  "articles": [
+    {
+      "slug": "choosing-your-next-step",
+      "status": "approved",
+      "title": "How to choose a useful next step",
+      "description": "A fictional fixture for the article template.",
+      "author": "Example author — replace before use",
+      "updatedAt": "2026-10-16",
+      "sourceIds": [
+        "fixture"
+      ],
+      "sections": [
+        {
+          "heading": "Start with the customer",
+          "body": "Replace this fixture with original researched guidance for the actual customer."
+        },
+        {
+          "heading": "Check the evidence",
+          "body": "Link original sources and explain what they support. This fixture is not business advice."
+        }
+      ]
+    }
+  ],
+  "solutions": [
+    {
+      "slug": "one-useful-experience",
+      "status": "approved",
+      "title": "One useful experience",
+      "description": "A fictional fixture for a supported use case.",
+      "uniqueValue": "A distinct local testing use case.",
+      "sourceIds": [
+        "fixture"
+      ],
+      "sections": [
+        {
+          "heading": "A specific need",
+          "body": "Replace this fictional use case with a real sourced need and distinct data."
+        },
+        {
+          "heading": "A relevant next step",
+          "body": "Explain the actual next action and what the visitor receives."
+        }
+      ]
+    }
+  ],
+  "siteUrl": null,
+  "publicationApproved": false
+}

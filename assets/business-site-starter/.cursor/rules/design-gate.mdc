@@ -1,0 +1,20 @@
+---
+description: Required shared design context and review gates for this site
+alwaysApply: true
+---
+
+Read AGENTS.md and the current approved brief before changing the site.
+Run `npm run verify:design` in the site folder before implementation.
+Stop if any file is missing or its hash differs. Restore the approved full library; never replace it with a summary.
+Follow `.agents/skills/studio-design-gate/SKILL.md`. Design skill precedence: YC Interface Craft leads visual direction (its SKILL.md plus only the 3-5 matching research records); Intentional UI Design sets the quality floor; frontend-design guides composition and type. Illustration, motion and component skills load only when the design contract names them.
+Record the paths actually read in `evidence/design-skills-read.md`. A hash check alone is not a load acknowledgment.
+This starter has no page design. Replace the placeholder page with components written for `design/contract.md`. Never build a data-driven section builder.
+Build only the hero and first proof section first. Capture 1440px and 390px screenshots in Cloud. Build nothing else until the Designer and the marketing reviewer both PASS Gate 1 in `design/gate.json`.
+Do not restart design exploration after a choice. Do not invent proof, prices, people or customer logos.
+Gate 2 reviews the full rendered desktop and phone site before the owner review. Also check the keyboard path, errors, useful result and reduced motion.
+Return actual source, logs, screenshots, run URL and model evidence to the PM. Stop before deployment.
+
+
+## Current handoff
+
+Before launch and after each feedback or scope change, get the current PM brief and approved design/copy handoff. Record their versions, approval state and file hashes in a handoff manifest. Send updated files to the same Cloud run and require acknowledgment of the received versions before further implementation. Recover existing approvals from PM; do not ask the owner to repeat them. An initial upload does not carry later decisions. Distinguish an uploaded archive audit from verification of files inside the live Cloud workspace.

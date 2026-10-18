@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "isDemo": false,
+  "business": {
+    "name": "Corvane Freight Audit",
+    "audienceType": "b2b",
+    "description": "Corvane Freight Audit is a fictional business used only as a test fixture. It checks carrier invoices for mid-size shippers.",
+    "customer": "Logistics managers at shippers spending over 1 million a year on freight",
+    "industry": "Freight invoice auditing (fictional)",
+    "region": null,
+    "offer": "A free audit of the last 90 days of carrier invoices",
+    "pricing": {
+      "model": "success-fee",
+      "display": "20% of recovered overcharges",
+      "approved": false,
+      "status": "proposed",
+      "source": "PM recommendation from owner answer 2",
+      "rationale": "The owner described a success fee but has not confirmed the rate; shown only as proposed."
+    }
+  },
+  "intake": {
+    "answers": [
+      {
+        "question": "What does your business do, and for whom?",
+        "answer": "We find billing errors in freight invoices for mid-size shippers.",
+        "source": "owner"
+      },
+      {
+        "question": "What do you want visitors to buy or start?",
+        "answer": "A paid ongoing audit; we take a share of what we recover.",
+        "source": "owner"
+      },
+      {
+        "question": "What should a visitor do first on the site?",
+        "answer": "Send us 90 days of invoices for a free check.",
+        "source": "owner"
+      }
+    ],
+    "openQuestions": [
+      "Confirm the success-fee rate",
+      "Confirm which carriers to name"
+    ]
+  },
+  "positioning": {
+    "status": "proposed",
+    "source": "PM recommendation from owner answers 1-2",
+    "rationale": "Leads with recovered money, which the owner named as the reason clients buy.",
+    "headline": "Find the freight overcharges your team never has time to check.",
+    "summary": "We audit carrier invoices line by line and you only pay from what we recover.",
+    "difference": "Line-level checks against your contracted rates.",
+    "sources": []
+  },
+  "product": {
+    "status": "proposed",
+    "source": "PM recommendation from owner answer 3",
+    "rationale": "The owner wants a low-risk first step; an invoice upload request matches it.",
+    "journey": "report",
+    "primaryAction": {
+      "label": "Request a free invoice audit",
+      "href": "/start"
+    },
+    "outcome": "The visitor requests a free audit of 90 days of invoices.",
+    "acceptance": [
+      "Visitor can request a free audit"
+    ]
+  },
+  "brand": {
+    "accent": "#1f5f8b",
+    "ink": "#14202b",
+    "paper": "#f5f7f8"
+  },
+  "about": {
+    "status": "draft",
+    "headline": "About page not approved yet.",
+    "body": [],
+    "facts": []
+  },
+  "articles": [],
+  "solutions": [],
+  "siteUrl": null,
+  "publicationApproved": false,
+  "setup": {
+    "siteBuildModel": "claude-opus-5-5",
+    "siteBuildEffort": "medium",
+    "siteBuildFast": false,
+    "creativeBuildModel": "claude-sonnet-5-5",
+    "creativeBuildEffort": "medium"
+  },
+  "mode": "review"
+}
